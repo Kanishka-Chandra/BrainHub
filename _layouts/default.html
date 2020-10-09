@@ -1,16 +1,30 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ site.lang | default: "en-US" }}">
   <head>
-    <meta charset="utf-8">
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="/css/style.css">
+
+    {% if site.google_analytics %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', '{{ site.google_analytics }}');
+    </script>
+    {% endif %}
+    <meta charset="UTF-8">
+
+    {% seo %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
   </head>
   <body>
     <div class="topnav">
-        <a class="active" href="#home">Home</a>
-        <a href="html/articles.html">Articles</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+      <a class="active" href="#home">Home</a>
+      <a href="html/articles.html">Articles</a>
+      <a href="#contact">Contact</a>
+      <a href="#about">About</a>
     </div>
     <h1>{{ page.title }}</h1>
     <section>
